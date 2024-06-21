@@ -1,6 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 
+import { NavLink } from "react-router-dom";
+
 export default function Menu() {
   return (
     <Dialog.Root>
@@ -17,30 +19,39 @@ export default function Menu() {
             <Cross1Icon className="" />
             close menu
           </Dialog.Close>
+          <Dialog.Close>
+            <ul className="p-4 flex flex-col gap-4 text-left w-full">
+              <li className="p-2 hover:bg-gray-300 ">
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-red-500" : "")}
+                  to="/"
+                  end
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="p-2 hover:bg-gray-300 ">
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-red-500" : "")}
+                  to="/products"
+                  end
+                >
+                  Products
+                </NavLink>
+              </li>
+              <li className="hover:bg-gray-300 ">
+                <a className="p-4" href="/about">
+                  About
+                </a>
+              </li>
 
-          <ul className="p-4 flex flex-col gap-4 text-left w-full">
-            <li className="text hover:bg-gray-300 ">
-              <a className="p-4" href="/">
-                Home
-              </a>
-            </li>
-            <li className="text hover:bg-gray-300 ">
-              <a className="p-4" href="/products">
-                Products
-              </a>
-            </li>
-            <li className="hover:bg-gray-300 ">
-              <a className="p-4" href="/about">
-                About
-              </a>
-            </li>
-
-            <li className="hover:bg-gray-300">
-              <a className="p-4" href="/blog">
-                Blog
-              </a>
-            </li>
-          </ul>
+              <li className="hover:bg-gray-300">
+                <a className="p-4" href="/blog">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
